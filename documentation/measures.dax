@@ -1,0 +1,23 @@
+// =====================================================================
+// Social Media Content Performance: DAX measures (add in Power BI Desktop)
+// Table: social_media_engagement_dataset
+// Engagement = Likes + Comments + Shares (column already in the model)
+// Engagement Rate % = total engagement / total impressions (weighted, not an average of post rates)
+// Expected values: Total Posts 250 | Total Engagement 255,919 | Total Impressions 2,270,646
+//                  Engagement Rate 11.27% | Avg Engagement per Post 1,023.7
+// =====================================================================
+
+Total Posts =
+DISTINCTCOUNT ( social_media_engagement_dataset[Post_ID] )
+
+Total Engagement =
+SUM ( social_media_engagement_dataset[Engagement] )
+
+Total Impressions =
+SUM ( social_media_engagement_dataset[Impressions] )
+
+Engagement Rate % =
+DIVIDE ( [Total Engagement], [Total Impressions] ) * 100
+
+Avg Engagement per Post =
+DIVIDE ( [Total Engagement], [Total Posts] )
