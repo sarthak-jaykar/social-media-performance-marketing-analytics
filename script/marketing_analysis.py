@@ -123,16 +123,21 @@ print(df.groupby("Content_Category").apply(weighted_rate).round(2))
 print("\nWeighted engagement rate by Post_Type (%):")
 print(df.groupby("Post_Type").apply(weighted_rate).round(2))
 
-# Time bands
-df["Time_Band"] = pd.cut(
-    df["Posted_Hour"],
-    bins=[-1, 5, 11, 17, 23],
-    labels=["Night 00-05", "Morning 06-11", "Afternoon 12-17", "Evening 18-23"],
-)
+# Time bands (night wraps across midnight)
+hour = df["Posted_Hour"]
+conditions = [
+    hour.between(0, 5) | hour.between(21, 23),
+    hour.between(6, 11),
+    hour.between(12, 16),
+    hour.between(17, 20),
+]
+labels = ["Night (21:00-05:59)", "Morning (06:00-11:59)",
+          "Afternoon (12:00-16:59)", "Evening (17:00-20:59)"]
+df["Time_Band"] = np.select(conditions, labels, default="Unclassified")
 print("\nWeighted engagement rate by time band (%):")
-band = df.groupby("Time_Band", observed=False).apply(weighted_rate).round(2)
+band = df.groupby("Time_Band", sort=False).apply(weighted_rate).round(2)
 print(band)
-print("Posts per band:\n", df["Time_Band"].value_counts().sort_index())
+print("Posts per band:\n", df["Time_Band"].value_counts().reindex(labels))
 
 # Kruskal-Wallis tests on post-level engagement rates (non-parametric,
 # because engagement rates are skewed and groups are unequal in size)
