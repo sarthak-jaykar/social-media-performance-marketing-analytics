@@ -89,7 +89,7 @@ All figures come from the dataset. Group differences are descriptive. Where a te
 
 4. **Hashtag count has no relationship with engagement.** The correlation with total engagement is 0.006, and with engagement rate is −0.03.
 
-5. **Morning posts (06:00 to 11:59) have the highest engagement rate (12.6%)** across the four time bands, from 66 posts. Afternoon posts reached 10.8%, evening 11.1% and night 10.7%. This difference was not tested for significance.
+5. **Morning posts (06:00 to 11:59) have the highest engagement rate (12.6%)** across the four time bands, from 66 posts. Afternoon (12:00 to 16:59) reached 10.8%, evening (17:00 to 20:59) 11.1%, and night (21:00 to 05:59) 10.8% across 89 posts. Night includes the hours after midnight. This difference was not tested for significance.
 
 6. **Higher reach is associated with a lower engagement rate.** Across posts, the correlation between impressions and engagement rate is −0.72. Impressions and total engagement are only weakly related (−0.10), so reach does not bring a proportional increase in engagements. The larger the audience a post reaches, the smaller the share that engages.
 
@@ -179,4 +179,4 @@ This is a portfolio project using secondary data. Results describe that dataset 
 
 ---
 
-**Author:** [Sarthak Jaykar](https://www.linkedin.com/in/sarthak-jaykar/)
+**Author:** [Sarthak Jaykar](https://www.linkedin.com/in/sarthak-jaykar/) · [GitHub](https://github.com/sarthak-jaykar)
